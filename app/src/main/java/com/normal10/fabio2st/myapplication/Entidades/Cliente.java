@@ -33,6 +33,7 @@ public class Cliente {
         this.apellido = apellido;
     }
 
+    // los metodos en java son por defecto virtuales
     @Override
     public String toString(){
         return getApellido() +", " + getNombre();
