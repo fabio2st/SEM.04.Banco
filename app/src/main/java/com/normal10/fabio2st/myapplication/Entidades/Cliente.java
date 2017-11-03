@@ -1,5 +1,7 @@
 package com.normal10.fabio2st.myapplication.Entidades;
 
+import java.util.ArrayList;
+
 /**
  * Created by Propietario on 24/10/17.
  */
@@ -7,12 +9,14 @@ package com.normal10.fabio2st.myapplication.Entidades;
 public class Cliente {
     private String nombre;
     private String apellido;
+    private ArrayList<Cuenta> cuentas;
 
-    public Cliente(){
+    public Cliente() throws Exception{
         this("", "");
     }
 
-    public Cliente(String apellido, String nombre){
+    public Cliente(String apellido, String nombre) throws Exception{
+        cuentas = new ArrayList<Cuenta>();
         setApellido(apellido);
         setNombre(nombre);
     }
@@ -21,7 +25,9 @@ public class Cliente {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre) throws Exception{
+        if (nombre == "")
+            throw new Exception("Nombre no puede estar vacio");
         this.nombre = nombre;
     }
 
@@ -33,6 +39,19 @@ public class Cliente {
         this.apellido = apellido;
     }
 
+    public void addCuenta(Cuenta cuenta){
+        cuenta.setCliente(this);
+        cuentas.add(cuenta);
+    }
+
+    public void removeCuenta(Cuenta cuenta){
+        cuenta.setCliente(null);
+        cuentas.remove(cuenta);
+    }
+
+    public ArrayList<Cuenta> getAllCuentas(){
+        return cuentas;
+    }
     // los metodos en java son por defecto virtuales
     @Override
     public String toString(){

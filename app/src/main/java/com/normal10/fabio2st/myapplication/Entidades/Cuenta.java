@@ -8,6 +8,7 @@ public class Cuenta implements Suspendible {
     private int numero;
     private double balance;
     protected boolean activa;
+    private Cliente cliente;
 
     public Cuenta(){
         this(0,0);
@@ -33,6 +34,15 @@ public class Cuenta implements Suspendible {
 
     protected void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    // alcance sólo dentro del paquete
+    void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public void depositar(double valor){

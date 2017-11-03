@@ -11,9 +11,14 @@ public class ClienteTest {
     @Test
     public void TestCliente() throws Exception {
         Cliente cliente;
-        cliente = new Cliente();
-        assertEquals("",cliente.getNombre());
-        assertEquals("",cliente.getApellido());
+        try {
+            cliente = new Cliente();
+            assertEquals("",cliente.getNombre());
+            assertEquals("",cliente.getApellido());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
         String apellido = "Lepaurd";
         String nombre = "Pepe";
         cliente = new Cliente(apellido,nombre);
@@ -21,5 +26,4 @@ public class ClienteTest {
         assertEquals(apellido,cliente.getApellido());
         System.out.println(cliente.getApellido());
     }
-
 }
